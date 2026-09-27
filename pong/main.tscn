@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://b821myv7hqira"]
+
+[ext_resource type="PackedScene" uid="uid://d4j7xe1qi3tfu" path="res://Paddle.tscn" id="1_1bvp3"]
+[ext_resource type="Script" uid="uid://blyu5gt8cxah0" path="res://Main.cs" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://de78u6sepvyir" path="res://Ball.tscn" id="3_7mycd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(1280, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(1280, 20)
+
+[node name="Main" type="Node2D" unique_id=752048398]
+script = ExtResource("1_h2yge")
+
+[node name="AugšējāSiena" type="StaticBody2D" parent="." unique_id=2131938769]
+self_modulate = Color(0.8386555, 0.6653475, 0.6926717, 0.9607843)
+position = Vector2(-76, 71)
+scale = Vector2(100, 100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AugšējāSiena" unique_id=554717137]
+modulate = Color(0.84186584, 0.38341546, 0.46182513, 1)
+position = Vector2(7.161874, -0.548125)
+scale = Vector2(0.01, 0.01)
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="ApaksējaSiena" type="StaticBody2D" parent="." unique_id=1268571331]
+position = Vector2(2, 722)
+scale = Vector2(100, 100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ApaksējaSiena" unique_id=1611359708]
+position = Vector2(6.4, -0.14999986)
+scale = Vector2(0.01, 0.01)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="PaddleLeft" parent="." unique_id=1890626313 instance=ExtResource("1_1bvp3")]
+position = Vector2(-48, 360)
+
+[node name="PaddleRight" parent="." unique_id=1665963134 instance=ExtResource("1_1bvp3")]
+position = Vector2(1201, 360)
+IsLeftPaddle = false
+
+[node name="Ball" parent="." unique_id=550142442 instance=ExtResource("3_7mycd")]
+position = Vector2(640, 360)
+
+[node name="HUD" type="Control" parent="." unique_id=1285334184]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1276.0
+offset_bottom = 21.0
+
+[node name="Score" type="Label" parent="HUD" unique_id=667783626]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 20.0
+offset_right = 630.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 32
+text = "0 : 0"
+
+[node name="Message" type="Label" parent="HUD" unique_id=1300674226]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 100.0
+offset_right = 691.0
+offset_bottom = 123.0
+text = "Nospied space, lai šaktu!"
